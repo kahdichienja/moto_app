@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- shop css -->
+<link rel="stylesheet" href="{% static 'css/shop.css' %}">
+<div class="wrapper">
+    {% include 'utils/navbar.html' %}
+    <div class="main-content scroll-none home-page">
+
+            <!-- Breadcrumbs start -->
+        <div class="breadcrumbs" style="background-image: url('{% static 'images/car-bg.jpg' %}'); background-position: top; background-attachment: cover;">
+            <div class="breadcrumbs-overlay"></div>
+            <div class="page-title">
+                <h2>{{category_get_qs.category_name}}</h2>
+                <p>{{category_get_qs.category_name}}'s Vehicle</p>
+            </div>
+            <ul class="crumb">
+                <li><i class="fa fa-home"></i></li>
+                <li><a href="{% url 'home' %}"><i class="fa fa-angle-double-right"></i> Home</a></li>
+                <li><a href="#"><i class="fa fa-angle-double-right"></i>Category</a></li>
+            </ul>
+        </div>
+        <!-- Breadcrumbs end -->
+        <section class="text-center our-works2 light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="title text-center">{{category_get_qs.category_name}} <strong>Category</strong></h2>
+                    </div>
+                </div>
+            </div> 
+            <div class="content-container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    
+                                    {% for product in all_product_qs %}
+                                    <div class="col-md-3">
+                                        <div class="item-product first">
+                                            <div class="product-thumb">
+                                                <div class="midd">
+                                                    <a href="{% url 'productdetails' product.id %}" title="Read More"><img src="{{product.product_photo.url}}" alt=""></a>
+                                                    <div class="n-content">
+                                                        <p>New</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="info-product">
+                                                <h4><a href="">{{product.product_name}}</a></h4>
+                                                <div class="rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star-o"></i>
+                                                </div>
+                                                <p class="price">{{product.product_price}}/=</p>
+                                                <div class="add-cart">
+                                                    <a href="{% url 'cart' product.id %}" class="shop-btn">Add to Cart</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                        
+                                    
+                                </div>
+                                <ul class="pagination">
+                                    <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div><!-- container end -->
+                    </div><!-- page content end -->
+                </div> 
+        </section>
+    </div>
+    <!-- End: main content -->
+</div>
+{% endblock %}

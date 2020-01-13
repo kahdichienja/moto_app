@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" class="gr__xopom_xyz">
+{% load static %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <!-- Basic Page Needs
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    
+
+    <title>Motostore</title>
+    <meta name="keywords" content="HTML5 Template , Responsive , html5 , css3">
+    <meta name="description" content="Baako - Responsive HTML5 CSS3 Template">
+
+    <!-- Mobile Specific Metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS
+    ================================================== -->
+    
+    <!-- Bootstrap-3.3.7 fremwork css -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- Core Style css -->
+    <link rel="stylesheet" href="{% static 'css/colorbox.css' %}">
+    <!-- Slider carousel css  -->
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <!-- Slider revolution css  -->
+    <link rel="stylesheet" href="{% static 'css/settings.css' %}">
+    <link rel="stylesheet" href="{% static 'css/rev-settings.css' %}">
+    <!-- font Awesome-4.6.3 css -->
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <!-- shop css -->
+    <!-- <link rel="stylesheet" href="{% static 'css/shop.css' %}"> -->
+    <!-- Main style css -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    <!-- Favicons
+    ================================================== -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    
+</head>
+<body data-gr-c-s-loaded="true">
+    <div class="wmBox_overlay">
+        <div class="wmBox_centerWrap">
+            <div class="wmBox_centerer">
+                <div class="wmBox_contentWrap">
+                    <div class="wmBox_scaleWrap">
+                        <div class="wmBox_closeBtn">
+                            <p>x</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- page loader start -->
+    <div class="images-preloader" style="display: none;">
+      <div class="preloader4"></div>
+    </div>
+    <!-- page loader end -->
+    {% if messages %}
+        {% for  message in messages %}
+            <div class="alert alert-{{message.tags}}">
+                {{message}}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% block content %}
+
+    {% endblock %}
+        <!-- footer Start -->
+        <footer>
+            <div class="content-widgets">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6">
+                            <div class="footer-widget widget">
+                                <img src="{% static 'images/motologo.png' %}" alt="">
+                                <h4>Address</h4>
+                                <ul class="contact">
+                                    <li>
+                                        <i class="fa fa-map-marker"></i>
+                                         297 Kisumu , Kenya
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-phone"></i>
+                                        (+254) 797-324-006
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-envelope-o"></i>
+                                        agooclinton@gmail.com
+                                    </li>
+                                </ul> 
+                                <div class="social-media">
+                                    <a href="#"><i class="fa fa-facebook"></i></a>
+                                    <a href="#"><i class="fa fa-twitter"></i></a>
+                                    <a href="#"><i class="fa fa-linkedin"></i></a>
+                                    <a href="#"><i class="fa fa-google-plus"></i></a>
+                                    <a href="#"><i class="fa fa-pinterest"></i></a>
+                                    <a href="#"><i class="fa fa-rss"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="footer-widget widget">
+                                <h4></h4>
+                                <div class="tagcloud">
+                                </div>
+                                <h4></h4>
+                                <div class="footer-gallery">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="footer-widget widget">
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="footer-widget widget">
+                                <h4>Send Us Message</h4>
+                                <form action="#" method="post" class="footer-form">
+                                    <input id="name" name="name" type="text" value="" placeholder="name *">
+                                    <input id="email" name="email" type="email" value="" placeholder="email *">
+                                    <textarea id="comment" name="comment" placeholder="Message *"></textarea>
+                                    <a href="" class="btn login-btn">Send Us</a>              
+                                </form>                         
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <p>© Copyright 2020. All Rights Reserved.</p>
+                        </div>
+                        <div class="col-md-3">
+                            <p class="back-top"><a href="#" id="to-top">BACK TO TOP <i class="fa fa-angle-up"></i></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End: footer -->
+    </div>
+    <!-- Jquery -->
+    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/classie.js' %}"></script>
+    <!-- Core Style -->
+    <script type="text/javascript" src="{% static 'js/jquery.colorbox.js' %}"></script>
+    <!-- Carousel Slider  -->
+    <script type="text/javascript" src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <!-- Jquery Waypoints -->
+    <script type="text/javascript" src="{% static 'js/waypoints.min.js' %}"></script>
+    <!-- Jquery Counter -->
+    <script type="text/javascript" src="{% static 'js/visible.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/waypoints.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.easing.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.counterup.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.isotope.min.js' %}"></script>
+    <!-- Jquery progress bar js-->
+    <script type="text/javascript" src="{% static 'js/pro-bars.js' %}"></script>
+    <!-- SLIDER REVOLUTION SCRIPTS  -->
+    <script type="text/javascript" src="{% static 'js/jquery.themepunch.plugins.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.themepunch.revolution.min.js' %}"></script>
+    <!-- Template core js -->
+    <script type="text/javascript" src="{% static 'js/custom-index.js' %}"></script><div id="cboxOverlay" style="display: none;"></div><div id="colorbox" class="" role="dialog" tabindex="-1" style="display: none;"><div id="cboxWrapper"><div><div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxMiddleLeft" style="float: left;"></div><div id="cboxContent" style="float: left;"><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><button type="button" id="cboxPrevious"></button><button type="button" id="cboxNext"></button><button type="button" id="cboxSlideshow"></button><div id="cboxLoadingOverlay" style="float: left;"></div><div id="cboxLoadingGraphic" style="float: left;"></div></div><div id="cboxMiddleRight" style="float: left;"></div></div><div style="clear: left;"><div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div></div></div><div style="position: absolute; width: 9999px; visibility: hidden; display: none; max-width: none;"></div></div>
+    <script type="text/javascript" src="{% static 'js/wmbox.js' %}"></script>
+    <!-- header fixed js -->
+    <script type="text/javascript" src="{% static 'js/custom-contact.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/header-fixed.js' %}"></script>
+
+</body></html>

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- shop css -->
+<link rel="stylesheet" href="{% static 'css/shop.css' %}">
+<div class="wrapper">
+    {% include 'utils/navbar.html' %}
+    <div class="main-content">
+        <div class="page-content page-sidebar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-lg-9">
+                        <div class="content-container">
+                            <div class="content-inner">
+                                <h2>Checkout</h2>
+                                <hr class="hr">
+                                <div class="padding">
+                                    <div class="billing">
+                                        <form action="{% url 'checkout' %}" method="POST" class="comment-form ">
+                                            <div class="row-comment">
+                                                <p class="col-6">
+                                                    <label>First Name *</label>
+                                                    <input type="text" class="input-text " name="fname" placeholder="" value="">
+                                                </p>
+                                                <p class="col-6">
+                                                    <label>Last Name *</label>
+                                                    <input type="text" class="input-text " name="lname" placeholder="" value="">
+                                                </p>
+                                            </div>
+                                            <div class="row-comment">
+                                                <p class="col-6">
+                                                    <label>Email Address *</label>
+                                                    <input type="email" class="input-text " name="email" placeholder="" value="">
+                                                </p>
+                                                <p class="col-6">
+                                                    <label>Phone *</label>
+                                                    <input type="tel" class="input-text " name="phone_number" placeholder="" value="">
+                                                </p>
+                                            </div>
+                                            <p>
+                                                <label>Country *</label>
+                                                <select name="country">
+                                                    <option value="Kenya">Kenya</option>
+                                                    <option value="Uganda">Uganda</option>
+                                                    <option value="Tanzania">Tanzania</option>
+                                                    <option value="Ethiopia">Ethiopia</option>
+                                                </select>
+                                            </p>
+                                            {% csrf_token %}
+                                            <p>
+                                                <label>Address *</label>
+                                                <input type="text" class="input-text " name="address" placeholder="" value="">
+                                            </p>
+                                            <p>
+                                                <label>Town / City *</label>
+                                                <input type="text" class="input-text " name="town_city" placeholder="" value="">
+                                            </p>
+                                            <div class="row-comment">
+                                                <p class="col-6">
+                                                    <label>State / County *</label>
+                                                    <input type="text" class="input-text " name="county_state" placeholder="" value="">
+                                                </p>
+                                                <p class="col-6">
+                                                    <label>Postcode / ZIP *</label>
+                                                    <input type="text" class="input-text " name="postal_zip" placeholder="" value="">
+                                                </p>
+                                            </div>
+                                            <div class="btns-bot">
+                                                <button type="submit" class="btn btn-color">Place Order</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                   
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="sidebar">
+                            <div class="total-cart order">
+                                <h4>Cart Totals</h4>
+                                <table class="fully">
+                                    <tbody><tr>
+                                        <td>Cart Subtotal</td>
+                                        <td class="total">{{cart_total}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shipping</td>
+                                        <td class="total">Free Shipping</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>ORDER TOTAL</strong></td>
+                                        <td class="total color">{{cart_total}}</td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

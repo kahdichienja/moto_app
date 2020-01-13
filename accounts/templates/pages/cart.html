@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+    {% include 'utils/navbar.html' %}
+            <div class="main-content">
+                <div class="page-content page-sidebar">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-lg-9">
+                                <div class="content-container">
+                                    <div class="title-page">
+                                        <h2>Shopping Cart</h2>
+                                    </div>
+                                    <div class="content-inner">
+                                        <div class="padding">
+                                            <p class="font-12">YOU HAVE <strong>{{cart_list.count}} </strong> ITEMS IN YOUR SHOPPING CART</p>
+                                            <table class="shop-cart">
+                                                <tbody><tr>
+                                                    <th>PRODUCT</th>
+                                                    <th>QUANTITY</th>
+                                                    <th>PRICE</th>
+                                                    <th>TOTAL</th>
+                                                </tr>
+                                                
+                                                {% for cart in cart_list %}
+                                                <tr>
+                                                    <td class="long">
+                                                        <img src="{{cart.product.product_photo.url}}" alt="">
+                                                        <h4><a href="#">{{ cart.product }}</a></h4>
+                                                        <a href="{% url 'remove_cart' cart.id %}">REMOVE</a>
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" disabled value="{{cart.qnty}}">
+                                                    </td>
+                                                    <td>
+                                                        {{cart.total}}/=
+                                                    </td>
+                                                    <td class="total">
+                                                        {{cart.total}}/=                                                           
+                                                    </td>
+                                                </tr>
+                                                {% endfor %}
+                                                    
+                                                
+                                                
+                                            </tbody></table>
+    
+                                            <div class="total-cart">
+                                                <h4>TOTALS</h4>
+                                                <form accept="#">
+                                                    <table class="fully">
+                                                        <tbody><tr>
+                                                            <td>Cart subtotal:</td>
+                                                            <td class="total">{{cart_total}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Shipping:</td>
+                                                            <td class="total">FREE</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>Order total:</td>
+                                                            <td class="total color">{{cart_total}}</td>
+                                                        </tr>
+                                                    </tbody></table>
+                                                    <div class="btns-bot">
+                                                        <a href="{% url 'shop' %}" class="btn btn-dark">UPDATE CART</a>
+                                                        <a href="{% url 'checkout' %}" class="btn btn-color">PROCEED TO CHECKOUT</a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-md-4 col-lg-3">
+                                <div class="sidebar">
+                                    <div class="widget widget_search">
+                                        <form method="get" class="search-form input-group" action="#">
+                                            <input class="form-control" type="text" value="" name="s" id="s" placeholder="type to search...">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                                            </span>
+                                        </form>
+                                    </div>
+                                    <div class="widget">
+                                        <h4>Popular Categories</h4>
+                                        <div class="tags">
+                                        {% for category in all_category_qs %}
+                                            <a href="{% url 'categorydetails' category.id %}">{{category.category_name}}</a>
+                                        {% endfor %} 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!-- container end -->
+                </div><!-- page content end -->
+            </div><!-- main content end -->
+    <!-- End: main content -->
+</div>
+{% endblock %}

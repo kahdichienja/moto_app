@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+    {% include 'utils/navbar.html' %}
+    <!-- Breadcrumbs start -->
+    <div class="breadcrumbs"
+        style="background-image: url('{% static 'images/car-bg.jpg' %}'); background-position: top; background-attachment: cover;">
+        <div class="breadcrumbs-overlay"></div>
+        <div class="page-title">
+            <h2>{{product_get_qs.product_name}}</h2>
+            <p></p>
+        </div>
+        <ul class="crumb">
+            <li><i class="fa fa-home"></i></li>
+            <li><a href="{% url 'home' %}"><i class="fa fa-angle-double-right"></i> Home</a></li>
+            <li><a href="{% url 'shop' %}"><i class="fa fa-angle-double-right"></i>Shop</a></li>
+            <li><a href="#"><i class="fa fa-angle-double-right"></i>{{product_get_qs.product_name}}</a></li>
+        </ul>
+    </div>
+    <!-- Breadcrumbs end -->
+    <!-- Main start -->
+    <div class="main-content">
+        <div class="page-content page-sidebar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                        <div class="content-container">
+                            <div class="content-inner">
+                                <div class="padding">
+                                    <div class="pro-details">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div id="img-preview" class="img-product owl-carousel owl-theme"
+                                                    style="opacity: 1; display: block;">
+                                                    <div class="owl-wrapper-outer">
+                                                        <div class="owl-wrapper"
+                                                            style="width: 2100px; left: 0px; display: block; transition: all 1000ms ease 0s; transform: translate3d(0px, 0px, 0px);">
+                                                            <div class="owl-item" style="width: 525px;">
+                                                                <img src="{{ product_get_qs.product_photo.url }}" alt="">
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <section class="text-center our-works2 light">
+                                                                        <div class="our-projects">            
+                                                                            <ul id="filter" class="filter-projects none-style">
+                                                                                
+                                                                            </ul>                                                                
+                                                                            <div id="gallery" class="all-projects projects-4" style="position: relative; height: 424px;">
+                                                                                {% for product in attr_qs %}
+                                                                                <div class="item css html5" style="position: absolute; left: 0px; top: 0px;">
+                                                                                    <div class="project-box ">
+                                                                                        <div class="image-project">
+                                                                                            <img src="{{ product.attrbute_photo.url }}" alt="">
+                                                                                            <div class="overlay">
+                                                                                                <h4><a href="#">{{product.product_name}}</a></h4>
+                                                                                                <a href="{{ product.attrbute_photo.url }}" class="zoomin cboxElement">
+                                                                                                    <i class="fa fa-expand"></i>
+                                                                                                </a>
+                                                                                                <a href="#" class="linkout">
+                                                                                                    <i class="fa fa-link"></i>
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div> 
+                                                                                {% endfor %}                                                                               
+                                                                            </div>
+                                                                        </div>
+                                                                    </section>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="owl-controls clickable">
+                                                        <div class="owl-pagination">
+                                                            <div class="owl-page active">
+                                                                <span class=""></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <h3>{{product_get_qs.product_name}}</h3>
+                                                <div class="single-rating">
+                                                    <span>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star-o"></i>
+                                                    </span>
+                                                    <span></span>
+                                                    <p>Availability: <span>In stock
+                                                            {{product_get_qs.number_in_stock}}</span></p>
+                                                    <p>{{ product_get_qs.description }}</p>
+                                                    <p class="single-price">{{ product_get_qs.product_price }}/=</p>
+                                                    <div class="product-cart">
+                                                        <input type="number" step="1" min="1" name="quantity" value="1"
+                                                            title="Qty" class="input-text qty text" size="4">
+                                                        <a href="{% url 'cart' product_get_qs.id %}" class="btn btn-color2">Add to
+                                                            cart</a>
+                                                        <button type="submit" class="btn btn-color2"><i
+                                                                class="fa fa-heart"></i></button>
+                                                    </div>
+                                                    <div class="cat">
+                                                        Categories:
+
+                                                        {% for category in all_category_qs %}
+                                                        <a
+                                                            href="{% url 'categorydetails' category.id %}">{{category.category_name}}</a>,
+                                                        {% endfor %}
+
+                                                    </div>
+                                                    <div class="follow-us">
+                                                        <ul>
+                                                            <li>
+                                                                <p>Follow us:</p>
+                                                            </li>
+                                                            <li><i class="fa fa-facebook"></i></li>
+                                                            <li><i class="fa fa-twitter"></i></li>
+                                                            <li><i class="fa fa-google"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="product-meta">
+                                            <div id="tabs-default" class="tabs-default r-tabs">
+                                                <ul class="title-tabs none-style r-tabs-nav">
+                                                    <li class="r-tabs-tab r-tabs-state-active"><a href="tab#tab13"
+                                                            class="r-tabs-anchor"> Description </a></li>
+                                                </ul>
+                                                <div class="content-tabs">
+                                                    <div class="r-tabs-accordion-title r-tabs-state-active"><a
+                                                            href="tab#tab13" class="r-tabs-anchor"> Description </a>
+                                                    </div>
+                                                    <div id="tab13" class="r-tabs-panel r-tabs-state-active"
+                                                        style="display: block;">
+                                                        <p>{{ product_get_qs.description }}</p>
+                                                    </div>
+                                                    <div class="r-tabs-accordion-title r-tabs-state-default"><a
+                                                            href="tab#tab23" class="r-tabs-anchor"> Reviews (2) </a>
+                                                    </div>
+                                                    <div id="tab23" class="r-tabs-panel r-tabs-state-default"
+                                                        style="display: none;">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Related product  start -->
+                                    <div class="pro-related">
+                                        <h4>RELATED PRODUCTS</h4>
+                                        <div id="product-owl" class="pro-slider owl-carousel owl-theme"
+                                            style="opacity: 1; display: block;">
+                                            <div class="owl-wrapper-outer">
+                                                <div class="owl-wrapper"
+                                                    style="width: 2700px; left: 0px; display: block; transition: all 800ms ease 0s; transform: translate3d(-270px, 0px, 0px);">
+                                                    <div class="owl-item" style="width: 270px;">
+                                                        <div class="item-product">
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    {% for related in related_products %}
+                                                    <div class="owl-item" style="width: 270px;">
+                                                        <div class="item-product">
+                                                            <div class="product-thumb">
+                                                                <div class="midd">
+                                                                    <a href="{% url 'productdetails' related.id %}"><img src="{{ related.product_photo.url }}"
+                                                                            alt=""></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="info-product">
+                                                                <h4>
+                                                                    <a href="{% url 'productdetails' related.id %}">{{ related.product_name }}</a>
+                                                                </h4>
+                                                                <div class="rating">
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                    <i class="fa fa-star"></i>
+                                                                </div>
+                                                                <p class="price">{{ related.product_price }}/=</p>
+                                                                <div class="add-cart">
+                                                                    <a href="shop-product-full-width.html#"
+                                                                        class="related-btn">Add to Cart</a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Main end -->
+</div>
+{% endblock %}

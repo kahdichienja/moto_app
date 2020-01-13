@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="wrapper">
+    {% include 'utils/navbar.html' %}
+    <!-- Breadcrumbs start -->
+    <div class="breadcrumbs" style="background-image: url('{% static 'images/car-bg-4.jpg' %}'); background-position: top; background-attachment: cover;">
+        <div class="breadcrumbs-overlay"></div>
+        <div class="page-title">
+            <h2>Login</h2>
+            <p>Work is easy when you have all tools around you!</p>
+        </div>
+        <ul class="crumb">
+            <li><i class="fa fa-home"></i></li>
+            <li><a href="{% url 'home' %}"><i class="fa fa-angle-double-right"></i> Home</a></li>
+            <li><a href="{% url 'login_register' %}"><i class="fa fa-angle-double-right"></i>Login</a></li>
+        </ul>
+    </div>
+    <!-- Breadcrumbs end -->
+    <div class="main-content">
+        <div class="page-content">
+            <!-- container start -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="content-primary">
+                            <div class="content-inner">
+                                <!-- login section start -->
+                                <section>
+                                    <div class="container">
+                                        <div class="col-md-6 padding">
+                                            <div class="login">
+                                                <h4 class="h4-color">LOGIN CUSTOMER</h4>
+                                                <form action="{% url 'login_register' %}" method="POST" class="comment-form contact-form">
+                                                    {% csrf_token %}
+                                                    <label>Username *</label>
+                                                    <p class="comment-form-author">
+                                                        {{form.username}}
+                                                    </p>
+                                                    <label>Password *</label>
+                                                    <p class="comment-form-email">
+                                                        {{form.password}}
+                                                    </p>
+                                                    <div class="text-left">
+                                                        <input name="email" type="checkbox">
+                                                         <label>Rembember me</label>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <button type="submit" class="login-btn btn">Log in</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 padding c-form">
+                                            <div class="login">
+                                            <h4 class="h4-color">REGISTER AN ACCOUNT</h4>
+                                            <form action="{% url 'user_register' %}" method="POST" class="comment-form contact-form">
+                                                <div class="row-comment">
+                                                    
+                                                    <p class="comment-form-autor col-6">
+                                                    <label>E-mail Address *</label>
+                                                        {{registerform.email}}
+                                                        <span class="error" id="err-name">please enter valid email</span>
+                                                    </p>
+                                                    
+                                                    <p class="comment-form-auhor col-6">
+                                                    <label>Username *</label>
+                                                        {{registerform.username}}
+                                                        <span class="error" id="err-name">please enter name</span>
+                                                    </p>
+                                                </div>
+                                                <div class="row-comment">
+                                                    <p class="col-6">
+                                                        <label>Password *</label>
+                                                        {{registerform.password1}}
+                                                    </p>
+                                                    <p class="col-6">
+                                                        <label>Cornfirm Password *</label>
+                                                        {{registerform.password2}}
+                                                    </p>
+                                                </div>
+                                                {% csrf_token %}
+                                                <div class="text-right">
+                                                    <button type="submit" class="login-btn btn">Register</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- End: login section -->
+                            </div>
+                        </div>                            
+                    </div>
+                </div>
+            </div>
+            <!-- End: container -->
+        </div>
+    </div>
+</div>
+{% endblock %}

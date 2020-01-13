@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- shop css -->
+<link rel="stylesheet" href="{% static 'css/shop.css' %}">
+<div class="wrapper">
+    {% include 'utils/navbar.html' %}
+    <div class="main-content">
+        <div class="page-content page-sidebar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-lg-9">
+                        <div class="content-container">
+                            <div class="content-inner">
+                                <h2>Purchases:</h2>
+                                <hr class="hr">
+                                <div class="padding">
+                                    <div class="total-cart order">
+                                            <table class="fully">
+                                               <thead>
+                                                  <tr>
+                                                    <th>Product</th>
+                                                    <th>Price</th>
+                                                    <th>Quantity</th>
+                                                    <th>Total</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                {% for cart in cart_list %}
+                                                <tr>
+                                                    <td>{{ cart.product }}</td>
+                                                    <td>{{cart.total}}</td>
+                                                    <td>{{cart.qnty}}</td>
+                                                    <td>{{cart.total}}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody></table>
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-3">
+                        <div class="sidebar">
+                            <div class="total-cart order">
+                                <h4>Order Totals</h4>
+                                <table class="fully">
+                                    <tbody>
+                                    <tr>
+                                        <td><strong>ORDER TOTAL</strong></td>
+                                        <td class="total color">{{cart_total}}</td>
+                                    </tr>
+                                </tbody></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<!-- shop css -->
+<link rel="stylesheet" href="{% static 'css/shop.css' %}">
+<div class="wrapper">
+    {% include 'utils/navbar.html' %}
+    <div class="main-content">
+        <div class="content-container">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h2>Shop Catalog</h2>
+                                <div class="top-filter">
+                                </div>
+                            </div>
+                            {% for product in all_product_qs %}
+                            <div class="col-md-3">
+                                <div class="item-product first">
+                                    <div class="product-thumb">
+                                        <div class="midd">
+                                            <a href="{% url 'productdetails' product.id %}"><img src="{{product.product_photo.url}}" alt=""></a>
+                                            <div class="n-content">
+                                                <p>New</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="info-product">
+                                        <h4><a href="{% url 'productdetails' product.id %}">{{product.product_name}}</a></h4>
+                                        <div class="rating">
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        </div>
+                                        <p class="price">{{product.product_price}}</p>
+                                        <div class="add-cart">
+                                            <a href="{% url 'cart' product.id %}" class="shop-btn">Add to Cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <ul class="pagination">
+                            <li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                            <li class="active"><a href="#">1</a></li>
+                            <li><a href="#">2</a></li>
+                            <li><a href="#">3</a></li>
+                            <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div><!-- container end -->
+            </div><!-- page content end -->
+        </div><!-- main content end -->
+    </div>
+</div>
+{% endblock %}

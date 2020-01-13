@@ -1,0 +1,112 @@
+{% load static %}
+<!-- header start -->
+<header class="site-header header14">
+    <!-- Top search -->
+    <div class="top-search">
+        <div class="container">
+            <div class="row">
+                <input type="text" class="" name="x" placeholder="Type &amp; Hit Enter" autofocus="autofocus">
+            </div>
+            <a href="{% url 'home' %}#" id="search-delete"><i class="fa fa-times"></i></a>
+        </div>
+    </div>
+    <!-- sub bar start -->
+    <div class="sub-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-6">
+                    <!-- Contacts start -->
+                    <div class="contacts">
+                        <p><i class="fa fa-phone"></i><b>Phone:</b> +254 (797) 324-006</p>
+                        <p><i class="fa fa-envelope-o"></i><a href="{% url 'home' %}"><b>Email:</b>
+                                agooclinton@gmail.com</a></p>
+                    </div><!-- Contacts start -->
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <!-- Social media start -->
+                    <div class="social-media">
+                        <a href="{% url 'home' %}"><i class="fa fa-facebook"></i></a>
+                        <a href="{% url 'home' %}"><i class="fa fa-twitter"></i></a>
+                        <a href="{% url 'home' %}"><i class="fa fa-linkedin"></i></a>
+                        <a href="{% url 'home' %}"><i class="fa fa-google-plus"></i></a>
+                        <a href="{% url 'home' %}"><i class="fa fa-github"></i></a>
+                        <a href="{% url 'home' %}"><i class="fa fa-pinterest"></i></a>
+                        <a href="{% url 'home' %}"><i class="fa fa-instagram"></i></a>
+                        <a href="{% url 'home' %}"><i class="fa fa-rss"></i></a>
+                    </div><!-- Social media end -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- sub bar End: -->
+    <!-- Main bar start -->
+    <div class="main-bar" id="main-bar" style="top: 42px;">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="{% static 'images/motologo.png' %}" style="width: 15rem;" alt="">
+                </a>
+            </div>
+            <button class="btn-toggle"><i class="fa fa-reorder"></i></button>
+            <nav class="nav" style="top: 123px;">
+                <ul class="main-menu">
+                    <li>
+                        <a href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="menu-item-has-children">
+                        <a href="#">Categories <i
+                                class="fa fa-angle-down"></i></a>
+                        <ul class="dropdown-menu dropdown-arrow">
+                            
+                            {% for category in all_category_qs %}
+                            <li class="menu-item-has-children">
+                                <a href="{% url 'categorydetails' category.id %}">{{category.category_name}}</a>
+                                <div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>
+                            </li>
+                            {% endfor %}                                
+                            
+                        </ul>
+                        <div class="dropdown-btn"><span class="fa fa-angle-down"></span></div>
+                    </li>
+                    <li>
+                        <a href="{% url 'shop' %}">Shop</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'cartlist' %}">Shopping Cart</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'user_profile' %}">Profile</a></li>
+                        <li><a href="{% url 'user_loguot' %}">Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login_register' %}">Sign In</a></li>
+                    {% endif %}
+                    <li><a id="search-toggle" class="nav_slide_button" href="#!"><span></span></a></li>
+                    <li class="cart-dropdown"><a class="padd-0" href="{% url 'home' %}"><i
+                                class="fa fa-shopping-cart"></i> {{cart_list.count}} </a>
+                        <div class="dropdown-content">
+                            {% for cart in cart_list %}
+                            <div class="item-box">
+                                <div class="image-info">
+                                    <img class="img-thumbnail" src="{{cart.product.product_photo.url}}">
+                                </div>
+                                <div class="item-content">
+                                    <h2><a href="#">{{ cart.product }}</a></h2>
+                                    <span>{{cart.total}}/=</span>
+                                </div>
+                                <div class="cart-delete">
+                                    <a href="{% url 'remove_cart' cart.id %}"><i class="fa fa-trash-o"></i></a>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <div class="text-center">
+                                <a href="{% url 'cartlist' %}" class="btn cart-btn blue">View Cart</a>
+                                <a href="{% url 'checkout' %}" class="btn cart-btn border">Check Out</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div><!-- Main bar end -->
+</header>
+<!-- header end -->
