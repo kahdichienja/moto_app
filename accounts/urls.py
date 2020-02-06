@@ -7,7 +7,7 @@ from django.conf.urls.static import static
 
 app_anme = 'accounts'
 urlpatterns = [
-    path('', views.homepage, name='home'),
+    path('', views.shop, name='home'),
     path('Oauth/', views.login_register, name = 'login_register'),
     path('reg/', views.user_register, name = 'user_register'),
     path('category/<int:id>', views.categorydetails, name = 'categorydetails'),

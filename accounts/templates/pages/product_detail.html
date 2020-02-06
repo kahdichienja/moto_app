@@ -5,7 +5,7 @@
 <div class="wrapper">
     {% include 'utils/navbar.html' %}
     <!-- Breadcrumbs start -->
-    <div class="breadcrumbs"
+    <!-- <div class="breadcrumbs"
         style="background-image: url('{% static 'images/car-bg.jpg' %}'); background-position: top; background-attachment: cover;">
         <div class="breadcrumbs-overlay"></div>
         <div class="page-title">
@@ -18,7 +18,7 @@
             <li><a href="{% url 'shop' %}"><i class="fa fa-angle-double-right"></i>Shop</a></li>
             <li><a href="#"><i class="fa fa-angle-double-right"></i>{{product_get_qs.product_name}}</a></li>
         </ul>
-    </div>
+    </div> -->
     <!-- Breadcrumbs end -->
     <!-- Main start -->
     <div class="main-content">
@@ -99,10 +99,7 @@
                                                     <p>{{ product_get_qs.description }}</p>
                                                     <p class="single-price">{{ product_get_qs.product_price }}/=</p>
                                                     <div class="product-cart">
-                                                        <input type="number" step="1" min="1" name="quantity" value="1"
-                                                            title="Qty" class="input-text qty text" size="4">
-                                                        <a href="{% url 'cart' product_get_qs.id %}" class="btn btn-color2">Add to
-                                                            cart</a>
+                                                        <a href="{% url 'cart' product_get_qs.id %}" class="btn btn-color2">Place An Order</a>
                                                         <button type="submit" class="btn btn-color2"><i
                                                                 class="fa fa-heart"></i></button>
                                                     </div>
