@@ -64,6 +64,7 @@ class Order(models.Model):
     county_state = models.CharField(max_length=50)
     postal_zip = models.CharField(max_length=50)
     is_paid = models.CharField(default = 'Pending', max_length=50)
+    when_to_contact_u = models.CharField(max_length=50, blank = True, null = True)
 
     def __str__(self):
         return f'{self.user} : {self.phone_number}'

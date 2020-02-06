@@ -200,6 +200,7 @@ def checkout(request):
             town_city = request.POST['town_city'],
             county_state = request.POST['county_state'],
             postal_zip = request.POST['postal_zip'],
+            when_to_contact_u = request.POST['when_to_contact_u'],
         )
         
         order_obj.save()

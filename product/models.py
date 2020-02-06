@@ -19,6 +19,10 @@ class Product(models.Model):
     description = models.TextField()
     product_photo = models.FileField(upload_to='Products')
     timestamp = models.DateTimeField(auto_now = True)
+    is_reserved = models.BooleanField(null = True)
+    is_sold_out = models.BooleanField(null = True)
+    is_new = models.BooleanField(null = True)
+    is_under_nego = models.BooleanField(null = True)
 
     def __str__(self):
         return f'{self.product_name}'
